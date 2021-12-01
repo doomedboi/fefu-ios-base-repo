@@ -18,10 +18,15 @@ class MainScrViewController: UIViewController {
         
         ExistBtn.setTitle("Уже есть аккаунт?", for: .normal)
         RegBtn.setTitle("Зарегистрироваться", for: .normal)
-        present(TabsViewController(nibName: "TabsViewController", bundle: nil),
-        animated: true, completion: nil)
+        
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        present(TabsViewController(nibName: "TabsViewController", bundle: nil),
+        animated: true, completion: nil)
+        
+    }
     @IBAction func RegBtnTap(_ sender: Any) {
         let regView = RegisterController(nibName: "RegisterController", bundle: nil)
         

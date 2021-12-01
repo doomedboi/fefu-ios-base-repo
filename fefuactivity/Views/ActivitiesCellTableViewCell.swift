@@ -17,6 +17,8 @@ struct ActivitiesTableViewModel {
     let endTime: String
 }
 
+
+
 class ActivitiesCellTableViewCell: UITableViewCell {
 
     @IBOutlet weak var timeLable: UILabel!
