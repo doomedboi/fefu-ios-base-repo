@@ -169,7 +169,7 @@ class ActivityBeginViewController: UIViewController {
         mapView.delegate = self
         mapView.tag = 1
         mapView.showsUserLocation = true
-        mapView.userTrackingMode = .follow
+        //mapView.userTrackingMode = .follow
     
         listActivitiesType.register(
             UINib(nibName: "ActivityTypeCollectionViewCell", bundle: nil),
