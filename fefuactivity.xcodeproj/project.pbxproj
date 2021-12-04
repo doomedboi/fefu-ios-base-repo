@@ -37,6 +37,7 @@
 		C48CA688274CF457009B6CB9 /* ActivitiesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C48CA686274CF457009B6CB9 /* ActivitiesViewController.xib */; };
 		C4C5757027579D2400276651 /* ActivityTypeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C5756E27579D2400276651 /* ActivityTypeCollectionViewCell.swift */; };
 		C4C5757127579D2400276651 /* ActivityTypeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C4C5756F27579D2400276651 /* ActivityTypeCollectionViewCell.xib */; };
+		C4C575732758820D00276651 /* CTopCornersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C575722758820D00276651 /* CTopCornersView.swift */; };
 		C4E0F015271D807B0036A948 /* CStyledButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E0F014271D807B0036A948 /* CStyledButton.swift */; };
 /* End PBXBuildFile section */
 
@@ -73,6 +74,7 @@
 		C48CA686274CF457009B6CB9 /* ActivitiesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivitiesViewController.xib; sourceTree = "<group>"; };
 		C4C5756E27579D2400276651 /* ActivityTypeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityTypeCollectionViewCell.swift; sourceTree = "<group>"; };
 		C4C5756F27579D2400276651 /* ActivityTypeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivityTypeCollectionViewCell.xib; sourceTree = "<group>"; };
+		C4C575722758820D00276651 /* CTopCornersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CTopCornersView.swift; sourceTree = "<group>"; };
 		C4E0F014271D807B0036A948 /* CStyledButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CStyledButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -90,6 +92,7 @@
 		1DE4E5B8270A5CCE004A30CA = {
 			isa = PBXGroup;
 			children = (
+				C4C575722758820D00276651 /* CTopCornersView.swift */,
 				C4C5756E27579D2400276651 /* ActivityTypeCollectionViewCell.swift */,
 				C4C5756F27579D2400276651 /* ActivityTypeCollectionViewCell.xib */,
 				C480B9432757199C008FEC13 /* PauseResumeActivityBtn.swift */,
@@ -240,6 +243,7 @@
 			files = (
 				C480B9422757126C008FEC13 /* FinishActivityBtn.swift in Sources */,
 				C4883431274FAB2C000F1DBD /* ActivityDetails.swift in Sources */,
+				C4C575732758820D00276651 /* CTopCornersView.swift in Sources */,
 				C478B0312744F7C1002E7580 /* RegisterController.swift in Sources */,
 				C478B0342744FD5A002E7580 /* CTextField.swift in Sources */,
 				1DE4E5C5270A5CCE004A30CA /* AppDelegate.swift in Sources */,

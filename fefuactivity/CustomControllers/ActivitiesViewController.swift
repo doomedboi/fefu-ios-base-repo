@@ -6,9 +6,10 @@
 //
 
 import UIKit
+import CoreData
 
 struct ActivitiesViewModel {
-    let date: String
+    let date: Date
     let activities: [ActivitiesTableViewModel]
 }
 
@@ -16,35 +17,7 @@ struct ActivitiesViewModel {
 
 class ActivitiesViewController: UIViewController {
     
-    // zaglushka
-    private let data: [ActivitiesViewModel] = {
-        let yesterdayActivities: [ActivitiesTableViewModel] = [
-            ActivitiesTableViewModel(distance: "14.32 км",
-                                           duration: "2 часа 46 минут",
-                                           activityTitle: "Велосипед",
-                                           timeAgo: "14 часов назад",
-                                           icon: UIImage(systemName: "bicycle.circle.fill") ?? UIImage(),
-                                           startTime: "14:49",
-                                           endTime: "16:31"
-                                          )
-        ]
-        
-        let mayActivities: [ActivitiesTableViewModel] = [
-            ActivitiesTableViewModel(distance: "14.32 км",
-                                           duration: "2 часа 46 минут",
-                                           activityTitle: "Велосипед",
-                                           timeAgo: "14 часов назад",
-                                           icon: UIImage(systemName: "bicycle.circle.fill") ?? UIImage(),
-                                           startTime: "14:49",
-                                           endTime: "16:31"
-                                          ),
-        ]
-        
-        return [
-            ActivitiesViewModel(date: "Вчера", activities: yesterdayActivities),
-            ActivitiesViewModel(date: "Май 22 года", activities: mayActivities)
-        ]
-    }()
+    private var data: [ActivitiesViewModel] = [ActivitiesViewModel]()
 
     @IBOutlet weak var emptyActivitiesScreen: UIView!
     @IBOutlet weak var activitiesTable: UITableView!
@@ -52,10 +25,52 @@ class ActivitiesViewController: UIViewController {
     @IBOutlet weak var emptyActivitiesTitile: UILabel!
     @IBOutlet weak var startBtn: CStyledButton!
     
+    
+    let dateFormatter = DateFormatter()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         selfInit()
-        // Do any additional setup after loading the view.
+        fetchFromCoreData()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        fetchFromCoreData()
+        self.activitiesTable.reloadData()
+    }
+    
+    private func createDateComponents(_ activityDate: Date) -> Date {
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.year, .month, .day], from: activityDate)
+        return calendar.date(from: components) ?? Date()
+    }
+    
+    private func fetchFromCoreData() {
+        let context = FEFUCoreDataContainer.instance.context
+        
+        let fetching = CDActivity.fetchRequest()
+        
+        do {
+            let raw = try context.fetch(fetching)
+            let activityModels: [ActivitiesTableViewModel] = raw.map {
+                activity in
+                let img = UIImage(systemName: "bicycle.circle.fill") ?? UIImage()
+                return ActivitiesTableViewModel(distance: activity.distance, duration: activity.duration, activityTitle: activity.type ?? "", timeAgo: activity.date ?? Date(), icon: img, startTime: activity.startTime ?? "", endTime: activity.endTime ?? "")
+            }
+            
+            let groupByDate = Dictionary(grouping: activityModels) {
+                activ in return createDateComponents(activ.timeAgo)
+            }
+            
+            self.data = groupByDate.map {(key, value) in
+                return ActivitiesViewModel(date: key, activities: value)
+            }
+            
+        } catch {
+                
+            }
+            
     }
     
     private func selfInit() {
@@ -75,7 +90,13 @@ class ActivitiesViewController: UIViewController {
         
         activitiesTable.separatorStyle = .none
         activitiesTable.backgroundColor = .clear
-        activitiesTable.isHidden = true
+        activitiesTable.isHidden = !self.data.isEmpty
+        
+        //  welcome screen [no activities]
+        emptyActivitiesScreen.isHidden = self.data.isEmpty
+        
+        dateFormatter.dateStyle = .medium
+        
     }
     
     
@@ -103,7 +124,13 @@ extension ActivitiesViewController: 	UITableViewDataSource {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = UILabel()
         header.font = .boldSystemFont(ofSize: 20)
-        header.text = data[section].date
+        
+        
+        
+        let date = data[section].date
+        let optHeader = dateFormatter.string(from: date)
+        header.text = optHeader
+        
         return header
     }
     
@@ -137,7 +164,8 @@ extension ActivitiesViewController : UITableViewDelegate {
         
         let detailsView = ActivityDetails(nibName: "ActivityDetails", bundle: nil)
 
-        detailsView.model = self.data[indexPath.section].activities[indexPath.row]
+        let activity = self.data[indexPath.section].activities[indexPath.row]
+        detailsView.model = activity
         
         navigationController?.pushViewController(detailsView, animated: true)
     }

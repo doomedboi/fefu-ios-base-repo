@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ActivityBeginViewController" customModule="fefuactivity" customModuleProvider="target">
             <connections>
+                <outlet property="commonView" destination="Fnq-5W-QcG" id="NpI-5A-Fbd"/>
                 <outlet property="createScreen" destination="yNg-tx-Oab" id="Xlk-FD-FH9"/>
                 <outlet property="createTitle" destination="WPL-mw-TJO" id="bCl-cf-DO7"/>
                 <outlet property="distance" destination="q3x-xC-rAN" id="8gA-d9-6RP"/>
@@ -36,7 +37,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fnq-5W-QcG" userLabel="Nijnee Menu">
                     <rect key="frame" x="0.0" y="589" width="414" height="273"/>
                     <subviews>
-                        <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yNg-tx-Oab" userLabel="Create activity menu">
+                        <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yNg-tx-Oab" userLabel="Create activity menu" customClass="TopCornersView" customModule="fefuactivity" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="274"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WPL-mw-TJO" userLabel="title">
@@ -87,7 +88,7 @@
                                 <constraint firstAttribute="trailing" secondItem="WPL-mw-TJO" secondAttribute="trailing" constant="30" id="vFx-zs-91O"/>
                             </constraints>
                         </view>
-                        <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yvM-yJ-iUi" userLabel="Manage activity menu">
+                        <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yvM-yJ-iUi" userLabel="Manage activity menu" customClass="TopCornersView" customModule="fefuactivity" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="42" width="414" height="232"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wuu-he-kRE" userLabel="pause" customClass="PRActivityBtn" customModule="fefuactivity" customModuleProvider="target">
@@ -98,6 +99,9 @@
                                     </constraints>
                                     <state key="normal" title="Button"/>
                                     <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                    <connections>
+                                        <action selector="didTapPauseActivity:" destination="-1" eventType="touchUpInside" id="fJV-ru-vWT"/>
+                                    </connections>
                                 </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="umk-fi-br1" userLabel="type">
                                     <rect key="frame" x="24" y="24" width="204" height="30"/>
@@ -134,6 +138,9 @@
                                     </constraints>
                                     <state key="normal" title="Button"/>
                                     <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                    <connections>
+                                        <action selector="didTapFinishActivity:" destination="-1" eventType="touchUpInside" id="A8b-TS-tqX"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>

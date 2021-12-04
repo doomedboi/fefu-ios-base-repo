@@ -16,6 +16,7 @@
                 <outlet property="comment" destination="DOd-vc-Njt" id="CFj-Rk-F7A"/>
                 <outlet property="distance" destination="HO4-qc-1tZ" id="3Ez-30-EtR"/>
                 <outlet property="duration" destination="Xmk-Tk-2wa" id="RZE-nu-Sij"/>
+                <outlet property="startBtn" destination="Ecs-Xz-0CW" id="YPv-my-fXs"/>
                 <outlet property="startEnd" destination="eBR-PW-4on" id="CWD-gb-uUE"/>
                 <outlet property="timeAgo" destination="dO4-XZ-S28" id="FjF-Ph-skO"/>
                 <outlet property="timeLeft" destination="fN3-fL-slE" id="xM1-vI-V6C"/>
@@ -78,6 +79,17 @@
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ecs-Xz-0CW" customClass="CStyledButton" customModule="fefuactivity" customModuleProvider="target">
+                    <rect key="frame" x="32" y="792" width="350" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="qmi-pw-xB4"/>
+                    </constraints>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                    <connections>
+                        <action selector="didTapStartActivity:" destination="-1" eventType="touchUpInside" id="u1h-tE-yj0"/>
+                    </connections>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -95,6 +107,7 @@
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="eBR-PW-4on" secondAttribute="trailing" constant="32" id="Tg1-9c-3hk"/>
                 <constraint firstItem="HO4-qc-1tZ" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="31" id="Tgr-Yj-HrZ"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="dO4-XZ-S28" secondAttribute="trailing" constant="32" id="Z8w-Ms-A1B"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Ecs-Xz-0CW" secondAttribute="trailing" constant="32" id="a64-EG-xn9"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Xmk-Tk-2wa" secondAttribute="trailing" constant="32" id="bg2-N4-76n"/>
                 <constraint firstItem="HO4-qc-1tZ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="32" id="eFg-xf-YHd"/>
                 <constraint firstItem="gmV-Nr-Zev" firstAttribute="top" secondItem="eBR-PW-4on" secondAttribute="bottom" constant="24" id="fK6-fv-td6"/>
@@ -103,9 +116,11 @@
                 <constraint firstItem="fN3-fL-slE" firstAttribute="bottom" secondItem="jrf-UX-V6X" secondAttribute="bottom" id="mQ0-mw-Os5"/>
                 <constraint firstItem="DOd-vc-Njt" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="32" id="smn-gz-j9g"/>
                 <constraint firstItem="HO4-qc-1tZ" firstAttribute="top" secondItem="dO4-XZ-S28" secondAttribute="bottom" constant="2.5" id="tYE-0O-veo"/>
+                <constraint firstItem="Ecs-Xz-0CW" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="32" id="taK-iy-OoA"/>
                 <constraint firstItem="gmV-Nr-Zev" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="32" id="uyc-Hw-fjZ"/>
                 <constraint firstItem="Xmk-Tk-2wa" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="32" id="wXS-Sj-zcp"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="HO4-qc-1tZ" secondAttribute="trailing" constant="32" id="whc-3T-9jP"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Ecs-Xz-0CW" secondAttribute="bottom" constant="20" id="yG5-Y5-BCS"/>
                 <constraint firstItem="gmV-Nr-Zev" firstAttribute="top" secondItem="jrf-UX-V6X" secondAttribute="top" id="zUB-bA-4TO"/>
                 <constraint firstItem="dO4-XZ-S28" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="32" id="zuq-kq-B6g"/>
             </constraints>
