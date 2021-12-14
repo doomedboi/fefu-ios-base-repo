@@ -15,6 +15,10 @@
                 <outlet property="ContinueBtn" destination="TOy-C6-nbU" id="sSu-RZ-zCX"/>
                 <outlet property="ScrollViewOutlet" destination="wol-yl-RsP" id="Fa9-YM-DPQ"/>
                 <outlet property="genderPickerOutlet" destination="RCw-4c-CCx" id="Te2-UO-7oq"/>
+                <outlet property="loginField" destination="uQq-jE-Jce" id="QPW-GW-LvW"/>
+                <outlet property="nicknameField" destination="Vym-hw-0bD" id="smb-y1-HHd"/>
+                <outlet property="passwordField" destination="zwB-cK-bbk" id="qH9-Mt-mbf"/>
+                <outlet property="repeatPasswordField" destination="BAc-h9-leN" id="Je9-9K-gZe"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -43,7 +47,7 @@
                                         <constraint firstAttribute="height" constant="53" id="DyZ-LB-tFg"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                    <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                    <textInputTraits key="textInputTraits"/>
                                 </textField>
                                 <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Повторите пароль" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BAc-h9-leN">
                                     <rect key="frame" x="17" y="146" width="380" height="34"/>
@@ -51,7 +55,7 @@
                                         <constraint firstAttribute="height" constant="53" id="Kal-zR-nr4"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                    <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                    <textInputTraits key="textInputTraits"/>
                                 </textField>
                                 <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Имя или никнейм" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vym-hw-0bD">
                                     <rect key="frame" x="17" y="219" width="380" height="34"/>
@@ -81,6 +85,9 @@
                                         </backgroundConfiguration>
                                         <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </buttonConfiguration>
+                                    <connections>
+                                        <action selector="didRegisterBtnTap:" destination="-1" eventType="touchUpInside" id="hdh-Fn-gY7"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
