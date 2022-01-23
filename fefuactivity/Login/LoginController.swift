@@ -50,7 +50,7 @@ class LoginController: UIViewController {
         do {
             let jsonUserData = try AuthRegUrlManager.encoder.encode(userData)
             
-            AuthRegUrlManager.instance.login(jsonUserData) { user in
+            AuthRegUrlManager.login(jsonUserData) { user in
                 print(user.token)
                 //  save user data
                 AuthRegDataManager.intance.saveUser(login: username, password: passw, pabKey: user.token)

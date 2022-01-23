@@ -66,18 +66,41 @@ class AuthRegUrlManager {
     static let encoder = JSONEncoder()
     static let decoder = JSONDecoder()
     
+    static let baseUrl = "https://fefu.t.feip.co/api"
     
     private init() {
         AuthRegUrlManager.encoder.keyEncodingStrategy = .convertToSnakeCase
         AuthRegUrlManager.decoder.keyDecodingStrategy = .convertFromSnakeCase
     }
     
+    static func createGet(url: URL) -> URLRequest{
+        var req = URLRequest(url: url)
+        
+        req.addValue("Bearer " + AuthRegDataManager.intance.getKey(nameOfKey:
+                                                                    AuthRegDataManager.userPublickKey)!, forHTTPHeaderField: "Authorization")
+        req.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        req.addValue("application/json", forHTTPHeaderField: "Accept")
+        
+        return req
+    }
     
+    static func createPost(url: URL, body: Data?) -> URLRequest {
+        var req = URLRequest(url: url)
+        
+        req.addValue("Bearer " + AuthRegDataManager.intance.getKey(nameOfKey:
+                                                                    AuthRegDataManager.userPublickKey)!, forHTTPHeaderField: "Authorization")
+        req.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        req.addValue("application/json", forHTTPHeaderField: "Accept")
+        req.httpMethod = "POST"
+        req.httpBody = body
+        
+        return req
+    }
     
-    func login(_ body: Data,
+    static func login(_ body: Data,
                completion: @escaping ((UserResp) -> Void)) {
         
-        guard let url = URL(string: "https://fefu.t.feip.co/api/auth/login") else {
+        guard let url = URL(string: baseUrl + "/auth/login") else {
             return //   URL! Andrew zapretil (ban!)
         }
         
@@ -142,6 +165,58 @@ class AuthRegUrlManager {
                     print("Something very very bad")
                 }
                 
+            }
+        }
+        
+        task.resume()
+    }
+    
+    static func logout(completion: @escaping (()-> Void)) {
+        guard let url = URL(string: baseUrl + "/auth/logout") else { return }
+        
+        let req = createPost(url: url, body: nil)
+        let session = URLSession.shared
+        
+        let task = session.dataTask(with: req) { data, response, error in
+            guard let res = response as? HTTPURLResponse else { return }
+            
+            switch res.statusCode {
+            case 200:
+                completion()
+            default:
+                print(res.statusCode)
+                break
+            }
+        }
+        
+        task.resume()
+    }
+    
+    static func profile(completion: @escaping ((UserModel)-> Void)) {
+        guard let url = URL(string: baseUrl + "/user/profile") else {return}
+        
+        let req = createGet(url: url)
+        
+        let session = URLSession.shared
+        
+        
+        
+        let task = session.dataTask(with: req) { data, response, error in
+            
+            guard let res = response as? HTTPURLResponse else {return}
+            
+            guard let data = data else {return}
+            
+            switch res.statusCode {
+            case 200:
+                do {
+                    let decodedData = try AuthRegUrlManager.decoder.decode(UserModel.self, from: data)
+                    completion(decodedData)
+                } catch _ {
+                    print("Error \(res.statusCode)")
+                }
+            default:
+                print(res.statusCode)
             }
         }
         

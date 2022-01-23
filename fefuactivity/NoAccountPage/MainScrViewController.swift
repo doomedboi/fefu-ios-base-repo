@@ -9,20 +9,13 @@ import UIKit
 
 class MainScrViewController: UIViewController {
     
-    
-    @IBOutlet weak var RegBtn: CStyledButton!
-    @IBOutlet weak var ExistBtn: UIButton!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        ExistBtn.setTitle("Уже есть аккаунт?", for: .normal)
-        RegBtn.setTitle("Зарегистрироваться", for: .normal)
         
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
+        super.viewDidAppear(animated)
         
     }
     @IBAction func RegBtnTap(_ sender: Any) {
@@ -31,11 +24,15 @@ class MainScrViewController: UIViewController {
         navigationController?.pushViewController(regView, animated: true)
     }
     
-    @IBAction func LogBtnTap(_ sender: Any) {
+   
+    @IBAction func loginBtnDidTap(_ sender: Any) {
         let logView = LoginController(nibName: "LoginController", bundle: nil)
         
         navigationController?.pushViewController(logView, animated: true)
+        
     }
+    
+    
     
     
 
