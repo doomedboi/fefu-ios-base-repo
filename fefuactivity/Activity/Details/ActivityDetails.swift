@@ -48,12 +48,12 @@ class ActivityDetails: UIViewController {
     
     func bind(_ model: ActivitiesTableViewModel) {
         //  unpack a model
-        let dist =  String(format: "%.2f km", model.distance / 1000)
+        let dist =  String(format: "%.2f km", Double(model.distance)! / 1000)
         
         
         //  setting up UI
         distance.text = dist
-        duration.text = duratinFormatter.string(from: model.duration)
+        duration.text = model.duration
         timeLeft.text = dateFormatter.string(from:  model.timeAgo)
         activityImg.image = model.icon
         startEnd.text = "Cтарт: \(model.startTime) Финиш: \(model.endTime)"

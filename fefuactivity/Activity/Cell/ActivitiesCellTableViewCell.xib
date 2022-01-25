@@ -36,8 +36,8 @@
                                 <color key="textColor" systemColor="secondaryLabelColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="ActivTitile" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IWl-ty-YcQ">
-                                <rect key="frame" x="44" y="69" width="79" height="18"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ActivTitile" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IWl-ty-YcQ">
+                                <rect key="frame" x="44" y="69" width="74" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -49,10 +49,16 @@
                                     <constraint firstAttribute="width" constant="20" id="d8u-hE-MrT"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="opJ-gE-mbl">
-                                <rect key="frame" x="254" y="69" width="57" height="18"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="opJ-gE-mbl">
+                                <rect key="frame" x="281" y="69" width="30" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" systemColor="secondaryLabelColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X0c-YV-GUs">
+                                <rect key="frame" x="273.5" y="16" width="37.5" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" systemColor="linkColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -70,9 +76,11 @@
                             <constraint firstAttribute="bottom" secondItem="IWl-ty-YcQ" secondAttribute="bottom" constant="16" id="VO2-7L-04B"/>
                             <constraint firstItem="KFb-SP-qwy" firstAttribute="top" secondItem="YUN-2f-PgA" secondAttribute="bottom" constant="3" id="Vof-n9-pNV"/>
                             <constraint firstItem="IWl-ty-YcQ" firstAttribute="leading" secondItem="YUN-2f-PgA" secondAttribute="trailing" constant="16" id="YBx-IM-rhb"/>
+                            <constraint firstItem="X0c-YV-GUs" firstAttribute="top" secondItem="C0w-Yd-ymf" secondAttribute="top" constant="16" id="Ylk-Vc-T3b"/>
                             <constraint firstItem="YmB-0S-TiK" firstAttribute="leading" secondItem="C0w-Yd-ymf" secondAttribute="leading" constant="18" id="ZbE-M4-HfE"/>
                             <constraint firstItem="YmB-0S-TiK" firstAttribute="top" secondItem="KFb-SP-qwy" secondAttribute="bottom" constant="9" id="bql-ob-f12"/>
                             <constraint firstItem="YUN-2f-PgA" firstAttribute="top" secondItem="C0w-Yd-ymf" secondAttribute="top" constant="13" id="c7r-pn-rXp"/>
+                            <constraint firstAttribute="trailing" secondItem="X0c-YV-GUs" secondAttribute="trailing" constant="32" id="pb6-oK-LiQ"/>
                             <constraint firstItem="KFb-SP-qwy" firstAttribute="trailing" secondItem="C0w-Yd-ymf" secondAttribute="trailing" constant="16" id="sCR-TV-QJK"/>
                             <constraint firstItem="YUN-2f-PgA" firstAttribute="leading" secondItem="C0w-Yd-ymf" secondAttribute="leading" constant="16" id="wZ3-yI-EN3"/>
                         </constraints>
@@ -98,6 +106,7 @@
                 <outlet property="activTitile" destination="IWl-ty-YcQ" id="bIc-7e-zdc"/>
                 <outlet property="durationLabel" destination="KFb-SP-qwy" id="YWR-z7-mG2"/>
                 <outlet property="imageActiv" destination="YmB-0S-TiK" id="8Be-p6-TlF"/>
+                <outlet property="nickname" destination="X0c-YV-GUs" id="bmm-HI-o2X"/>
                 <outlet property="timeLable" destination="opJ-gE-mbl" id="JCA-x6-9dl"/>
                 <outlet property="viewScreen" destination="C0w-Yd-ymf" id="JY9-qH-kyl"/>
             </connections>
@@ -105,6 +114,9 @@
         </tableViewCell>
     </objects>
     <resources>
+        <systemColor name="linkColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="secondaryLabelColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

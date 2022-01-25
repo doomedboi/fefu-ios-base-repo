@@ -9,13 +9,14 @@ import UIKit
 import Foundation
 
 struct ActivitiesTableViewModel {
-    let distance: Double
-    let duration: Double
+    let distance: String
+    let duration: String
     let activityTitle: String
     let timeAgo: Date
     let icon: UIImage
     let startTime: String
     let endTime: String
+    let nickname: String
 }
 
 
@@ -28,6 +29,7 @@ class ActivitiesCellTableViewCell: UITableViewCell {
     @IBOutlet weak var durationLabel: UILabel!
     @IBOutlet weak var distLabel: UILabel!
     @IBOutlet weak var viewScreen: UIView!
+    @IBOutlet weak var nickname: UILabel!
     
     //  formatter stuff
     let timeFormatter = DateComponentsFormatter()
@@ -51,20 +53,22 @@ class ActivitiesCellTableViewCell: UITableViewCell {
     }
     
     func bind(_ model: ActivitiesTableViewModel) {
-        let dst = String(format: "%.2f km", model.distance / 1000)
+        let dst = String(format: "%.2f km", Double(model.distance)! / 1000)
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .medium
         
         //  fill labels etc
         distLabel.text = dst
-        durationLabel.text = timeFormatter.string(from: model.duration)
+        durationLabel.text =  model.duration
         activTitile.text = model.activityTitle
         let curDate = Date()
         let interval = curDate.timeIntervalSince(model.timeAgo)
         //timeLable.text = dateFormatter.string(from: model.timeAgo)
         timeLable.text = "\(Int(round(interval / 3600) )) hours ago"
         imageActiv.image = model.icon
+        nickname.text = model.nickname
+        
     }
     
 }

@@ -15,18 +15,18 @@ struct ActivityType: Decodable, Identifiable {
 }
 
 struct GeoPoint: Decodable, Encodable {
-    let lat: Float //  [-90;90] let's make func to work with it or make own smart object???
-    let lon: Float //  [-180;180]
+    let lat: Double //  [-90;90] let's make func to work with it or make own smart object???
+    let lon: Double //  [-180;180]
 }
 
-struct UserActivity: Decodable {
+struct UserSocialActivity: Decodable {
     let id: Int
-    let createdAt: String
-    let startsAt: String
-    let endsAt: String
-    let activityType: ActivityType
-    let geoTrack: [GeoPoint]
-    let user: UserModel
+    let created_at: String
+    let starts_at: String
+    let ends_at: String
+    let activity_type: ActivityType
+    let geo_track: [GeoPoint]
+    let user: SocialUserModel
 }
 
 struct Gender: Decodable {
@@ -57,6 +57,24 @@ struct UserModel: Decodable, Identifiable {
     let name: String
     let login: String
     let gender: Gender
+}
+
+struct SocialUserModel: Decodable, Identifiable {
+    let id: Int
+    let name: String
+    let login: String
+}
+struct PaginationModel: Decodable {
+    let total: Int
+    let count: Int
+    let per_page: Int
+    let current_page: Int
+    let total_pages: Int
+}
+
+struct SocialActivitiesRespModel: Decodable {
+    let items: [UserSocialActivity]
+    let pagination: PaginationModel
 }
 
 class AuthRegUrlManager {
@@ -220,6 +238,31 @@ class AuthRegUrlManager {
             }
         }
         
+        task.resume()
+    }
+    
+    static func activities(completion: @escaping((SocialActivitiesRespModel)-> Void)) {
+        guard let url = URL(string: baseUrl + "/activities") else {return}
+        let req = createGet(url: url)
+        let session = URLSession.shared
+        
+        let task = session.dataTask(with: req) { data, response, error in
+            guard let data = data else {return}
+            guard let res = response as? HTTPURLResponse else {return}
+            print(res.statusCode)
+            switch res.statusCode {
+            case 200:
+                do {
+                    let decodedData = try decoder.decode(SocialActivitiesRespModel.self, from: data)
+                    completion(decodedData)
+                } catch let e {
+                    print("Error \(e)")
+                }
+            default:
+                print(res.statusCode)
+            }
+            
+        }
         task.resume()
     }
 }

@@ -15,6 +15,8 @@
                 <outlet property="emptyActivitiesDesc" destination="6Ch-kO-feq" id="hMl-J7-g03"/>
                 <outlet property="emptyActivitiesScreen" destination="2es-oE-odi" id="rtI-OP-IsB"/>
                 <outlet property="emptyActivitiesTitile" destination="mBY-yw-oxq" id="DjG-x6-FKW"/>
+                <outlet property="headerView" destination="UTn-6J-VA6" id="wYQ-FK-jiK"/>
+                <outlet property="segmentOutlet" destination="EqQ-PC-9u9" id="uyk-BD-rA0"/>
                 <outlet property="startBtn" destination="bxK-jB-70X" id="qkw-7q-vn2"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -39,9 +41,29 @@
                             </connections>
                         </button>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="103" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="mwZ-p2-GRx">
-                            <rect key="frame" x="16" y="0.0" width="382" height="639"/>
+                            <rect key="frame" x="16" y="51" width="382" height="588"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         </tableView>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UTn-6J-VA6" userLabel="HeaderView">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="51"/>
+                            <subviews>
+                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="EqQ-PC-9u9">
+                                    <rect key="frame" x="28" y="8" width="359" height="29"/>
+                                    <segments>
+                                        <segment title="My"/>
+                                        <segment title="Community"/>
+                                    </segments>
+                                </segmentedControl>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="0.94101821192052981" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="EqQ-PC-9u9" firstAttribute="leading" secondItem="UTn-6J-VA6" secondAttribute="leading" constant="28" id="Jop-Bs-4NZ"/>
+                                <constraint firstAttribute="bottom" secondItem="EqQ-PC-9u9" secondAttribute="bottom" constant="15" id="RP1-72-jPM"/>
+                                <constraint firstAttribute="height" constant="51" id="evY-A5-hR6"/>
+                                <constraint firstAttribute="trailing" secondItem="EqQ-PC-9u9" secondAttribute="trailing" constant="27" id="mtt-fB-sew"/>
+                                <constraint firstItem="EqQ-PC-9u9" firstAttribute="top" secondItem="UTn-6J-VA6" secondAttribute="top" constant="8" id="wCi-DO-xje"/>
+                            </constraints>
+                        </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2es-oE-odi">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="655"/>
                             <subviews>
@@ -74,14 +96,22 @@
                         <constraint firstItem="bxK-jB-70X" firstAttribute="top" secondItem="2es-oE-odi" secondAttribute="bottom" id="2IK-2F-lbH"/>
                         <constraint firstAttribute="trailing" secondItem="2es-oE-odi" secondAttribute="trailing" id="2dD-JA-VOu"/>
                         <constraint firstAttribute="trailing" secondItem="bxK-jB-70X" secondAttribute="trailing" constant="32" id="3ej-9D-khD"/>
+                        <constraint firstItem="UTn-6J-VA6" firstAttribute="leading" secondItem="0lC-M5-kQt" secondAttribute="leading" id="6Es-jb-4tb"/>
                         <constraint firstItem="bxK-jB-70X" firstAttribute="top" secondItem="mwZ-p2-GRx" secondAttribute="bottom" constant="16" id="BcF-24-wnb"/>
-                        <constraint firstItem="mwZ-p2-GRx" firstAttribute="top" secondItem="0lC-M5-kQt" secondAttribute="top" id="FRu-kN-g11"/>
+                        <constraint firstItem="UTn-6J-VA6" firstAttribute="top" secondItem="0lC-M5-kQt" secondAttribute="top" id="Dyx-Qe-Flf"/>
                         <constraint firstItem="2es-oE-odi" firstAttribute="leading" secondItem="0lC-M5-kQt" secondAttribute="leading" id="XkH-DI-N9p"/>
                         <constraint firstItem="bxK-jB-70X" firstAttribute="leading" secondItem="0lC-M5-kQt" secondAttribute="leading" constant="32" id="dqB-aD-hlf"/>
                         <constraint firstAttribute="trailing" secondItem="mwZ-p2-GRx" secondAttribute="trailing" constant="16" id="mZC-Rd-ySn"/>
                         <constraint firstAttribute="bottom" secondItem="bxK-jB-70X" secondAttribute="bottom" constant="20" id="v6t-NE-vgW"/>
                         <constraint firstItem="2es-oE-odi" firstAttribute="top" secondItem="0lC-M5-kQt" secondAttribute="top" id="vrO-Lg-Ccr"/>
+                        <constraint firstItem="mwZ-p2-GRx" firstAttribute="top" secondItem="UTn-6J-VA6" secondAttribute="bottom" id="y1u-Af-p8B"/>
+                        <constraint firstAttribute="trailing" secondItem="UTn-6J-VA6" secondAttribute="trailing" id="zTn-6R-DnH"/>
                     </constraints>
+                    <variation key="default">
+                        <mask key="subviews">
+                            <exclude reference="2es-oE-odi"/>
+                        </mask>
+                    </variation>
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
@@ -94,7 +124,7 @@
             </constraints>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
             <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
-            <point key="canvasLocation" x="139" y="75"/>
+            <point key="canvasLocation" x="137.68115942028987" y="75"/>
         </view>
     </objects>
     <resources>

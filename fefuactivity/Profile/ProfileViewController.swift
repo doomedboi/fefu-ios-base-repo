@@ -10,11 +10,11 @@ import Charts
 
 var ddata: [[profileTableStringModel]] = {
     let profileSection: [profileTableStringModel] = [
-        profileTableStringModel(type: "xx1", value: "xx1"), profileTableStringModel(type: "xx2", value: "xx2"),
-        profileTableStringModel(type: "xx3", value: "xx3")
+        profileTableStringModel(type: "login:", value: ""), profileTableStringModel(type: "name:", value: ""),
+        profileTableStringModel(type: "password:", value: "")
     ]
     let genderSection: [profileTableStringModel] = [
-        profileTableStringModel(type: "xx4", value: "xx4")
+        profileTableStringModel(type: "sex:", value: "")
     ]
     
     return [profileSection, genderSection]
@@ -99,7 +99,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
             let profileSection: [profileTableStringModel] = [
                 profileTableStringModel(type: "login:", value: login),
                 profileTableStringModel(type: "name:", value: name),
-                profileTableStringModel(type: "password", value: "****")
+                profileTableStringModel(type: "password:", value: "****")
             ]
             let genderSection: [profileTableStringModel] = [
                 profileTableStringModel(type: "sex:", value: sex.name)
