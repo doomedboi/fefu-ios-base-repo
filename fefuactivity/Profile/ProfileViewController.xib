@@ -32,7 +32,7 @@
                                 <constraint firstAttribute="height" constant="50" id="eT7-6O-5wn"/>
                             </constraints>
                             <state key="normal" title="Button"/>
-                            <buttonConfiguration key="configuration" style="plain" title="Button">
+                            <buttonConfiguration key="configuration" style="plain" title="Exit account">
                                 <color key="baseForegroundColor" red="0.94904512169999999" green="0.94966691729999997" blue="0.96868914370000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </buttonConfiguration>
                             <connections>
@@ -56,7 +56,7 @@
                                 </tableView>
                             </subviews>
                         </stackView>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xtm-74-7Dq" customClass="LineChartView" customModule="Charts">
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xtm-74-7Dq" userLabel="CharwView" customClass="LineChartView" customModule="Charts">
                             <rect key="frame" x="12" y="282" width="390" height="405"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         </view>
